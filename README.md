@@ -1,12 +1,12 @@
 # pi-k3s
 # Install and use K3s Kubernetes Rancher on Raspberrypi
 
-## Enable container features in Kernel
+## Enable container features in Kernel (all nodes)
 Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to the end of the line:
 
     cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
 
-## Modify hosts
+## Modify hosts (all nodes)
     sudo nano /etc/hosts
   
   ### Make sure all hosts had a diferent name and include all nodes on cluster, ie
@@ -20,7 +20,7 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
       192.168.42.115  k3node1
       192.168.42.116  k3node2
 
-  ### Modify hostname
+  ### Modify hostname (all nodes)
    This will be your node name
       
       pi@k3master:~ $ sudo nano /etc/hostname
@@ -28,9 +28,6 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
       k3master
   
 ## Install server node:
-
-
-
 
     curl -sfL https://get.k3s.io | sh -
 
@@ -46,7 +43,7 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
     sudo k3s kubectl get node -o wide
 
 ## Install worker nodes
-  On the master - get token
+  On the master node - get token
 
     cat /var/lib/rancher/k3s/server/node-token
 
@@ -71,6 +68,8 @@ In case you need to unnistall K3 for a new install
       chmod +x k3-unistall.sh
       ./k3-unistall.sh
 
-
+The main configuration yaml for K3 is
+        
+       sudo cat /etc/rancher/k3s/k3s.yaml
 
 
