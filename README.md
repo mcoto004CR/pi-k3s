@@ -28,6 +28,11 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
       pi@k3master:~ $ sudo cat /etc/hostname
       k3master
   
+## --  REBOOT YOUR PI   --
+       sudo reboot
+       Check hostname is ok: $hostname
+       try to ping master:  $ping k3master, make sure you get ping.
+
 ## Install server node:
 
     curl -sfL https://get.k3s.io | sh -
