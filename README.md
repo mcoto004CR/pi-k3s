@@ -51,14 +51,14 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
 ## Install worker nodes
   On the master node - get token
 
-    cat /var/lib/rancher/k3s/server/node-token
+    sudo cat /var/lib/rancher/k3s/server/node-token
 
   ### On worker nodes
 
     Add token as variable (not mandatory, you can add straight)
     NODETOKEN=K108b8................
  
-    curl -sfL https://get.k3s.io  | K3S_TOKEN=xxx K3S_URL=https://server-url:6443 sh -
+    sudo curl -sfL https://get.k3s.io  | K3S_TOKEN=xxx K3S_URL=https://server-url:6443 sh -
     K3S_TOKEN , is the token you get in the previous step
     K3S_URL , is your master node ip ...ie. 192.168.42.114 
     
