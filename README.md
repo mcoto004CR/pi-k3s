@@ -4,6 +4,7 @@
 ## Enable container features in Kernel (all nodes)
 Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to the end of the line:
 
+    sudo nano /boot/cmdline.txt
     cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
 
 ## Modify hosts (all nodes)
