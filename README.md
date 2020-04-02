@@ -34,4 +34,4 @@ Uninstall
 chmod +x k3-unistall.sh
 ./k3-unistall.sh
 
-
+https://github.com/boyroywax/k3s-armhf-start
