@@ -28,3 +28,10 @@ https://github.com/rancher/k3s
 https://rancher.com/docs/k3s/latest/en/quick-start/
 
 https://collabnix.com/get-started-with-k3s-a-lightweight-kubernetes-distribution-for-raspberry-pi-cluster/
+
+Uninstall
+/usr/local/bin
+chmod +x k3-unistall.sh
+./k3-unistall.sh
+
+
