@@ -71,8 +71,15 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
 In case you need to unnistall K3 for a new install
       
       cd /usr/local/bin
+      
+      -- On master --
       chmod +x k3-unistall.sh
       ./k3-unistall.sh
+      
+      -- On workers ---
+      /usr/local/bin
+      chmod +x k3s-agent-uninstall.sh
+      ./k3s-agent-uninstall.sh
 
 The main configuration yaml for K3 is
         
