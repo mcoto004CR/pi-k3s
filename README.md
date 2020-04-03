@@ -1,6 +1,7 @@
 # pi-k3s
 # Install and use K3s Kubernetes Rancher on Raspberrypi
 
+
 ## Enable container features in Kernel (all nodes)
 Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to the end of the line:
 
