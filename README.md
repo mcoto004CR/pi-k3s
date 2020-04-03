@@ -71,7 +71,9 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
   
   https://rancher.com/docs/k3s/latest/en/installation/install-options/
   
-  https://mhausenblas.info/kube-rpi/
+  https://mhausenblas.info/kube-rpi/ (no wroking for me_
+  
+  https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 ## Useful
 In case you need to unnistall K3 for a new install
