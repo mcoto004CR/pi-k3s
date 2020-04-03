@@ -138,7 +138,9 @@ The main configuration yaml for K3 is
             </style>
          etc.....................
 
-
+## Delete deployment and service
+    kubectl delete deployments mynginx
+    kubectl delete services mynginx
   
 
     
