@@ -45,7 +45,9 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
     pi@k3master:~ $ sudo kubectl get nodes
     NAME          STATUS   ROLES    AGE     VERSION
     k3master      Ready    master   5h42m   v1.17.4+k3s1
- 
+   
+    Make sure all system pods are running
+    kubectl get pods --all-namespaces
    
     sudo k3s kubectl get node -o wide
 
