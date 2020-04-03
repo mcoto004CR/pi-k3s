@@ -88,4 +88,60 @@ The main configuration yaml for K3 is
         
        sudo cat /etc/rancher/k3s/k3s.yaml
 
+# Test your Kubernetes cluster
+
+## Deploy nginx
+
+    kubectl run mynginx --image=nginx --replicas=3 --port=80
+    
+  Check deployment works, all pods should look on Running , it may take some time
+        
+    pi@k3master:~ $ sudo kubectl get pods
+    NAME                       READY   STATUS              RESTARTS   AGE
+    mynginx-7f79686c94-4c26p   0/1     ContainerCreating   0          28s
+    mynginx-7f79686c94-s7w4w   0/1     ContainerCreating   0          28s
+    mynginx-7f79686c94-2dw9t   0/1     ContainerCreating   0          28s
+
+    pi@k3master:~ $ sudo su
+    root@k3master:/home/pi# k3s kubectl get po
+    NAME                       READY   STATUS    RESTARTS   AGE
+    mynginx-7f79686c94-s7w4w   1/1     Running   0          2m50s
+    mynginx-7f79686c94-2dw9t   1/1     Running   0          2m50s
+    mynginx-7f79686c94-4c26p   1/1     Running   0          2m50s
+
+## Exposed deployment
+    root@k3master:/home/pi# sudo kubectl expose deployment mynginx --port 80
+    service/mynginx exposed
+    
+## Verify endpoints for PODs
+    root@k3master:/home/pi# sudo kubectl get endpoints mynginx
+    NAME      ENDPOINTS                                 AGE
+    mynginx   10.42.0.22:80,10.42.1.4:80,10.42.2.4:80   53s
+    
+## Test NGNIX is running
+  Pick one of the endpoints IPs and curl'it
+        
+    root@k3master:/home/pi# sudo curl 10.42.0.22:80
+
+  You should see the NGNIX welcome HTML
+        
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Welcome to nginx!</title>
+            <style>
+             body {
+                    width: 35em;
+                 margin: 0 auto;
+                 font-family: Tahoma, Verdana, Arial, sans-serif;
+                }
+            </style>
+         etc.....................
+
+
+  
+
+    
+
+
 
