@@ -65,7 +65,10 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
  
  ## Some reference pages
   https://github.com/rancher/k3s
+  
   https://rancher.com/docs/k3s/latest/en/quick-start/
+  
+  https://rancher.com/docs/k3s/latest/en/installation/install-options/
 
 ## Useful
 In case you need to unnistall K3 for a new install
