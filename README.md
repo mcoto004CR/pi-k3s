@@ -78,7 +78,7 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
   
 
 ## Install Kube Dashboard
-   rancher.com/docks/k3s/latest/en/installation/kube-dashboard/
+   https://rancher.com/docks/k3s/latest/en/installation/kube-dashboard/
    
    
 
