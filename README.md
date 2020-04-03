@@ -73,9 +73,14 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
   
   https://rancher.com/docs/k3s/latest/en/installation/install-options/
   
-  https://mhausenblas.info/kube-rpi/ (no wroking for me_
+  https://kubernetesbyexample.com
   
-  https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+  
+
+## Install Kube Dashboard
+   rancher.com/docks/k3s/latest/en/installation/kube-dashboard/
+   
+   
 
 ## Useful
 In case you need to unnistall K3 for a new install
@@ -149,7 +154,12 @@ The main configuration yaml for K3 is
     kubectl delete deployments mynginx
     kubectl delete services mynginx
   
-
+## Switch namespaces
+    kubectl config set-context $(kubectl config current-context) --namespace=XXXX
+    XXX can be default, kube-sysem or any other you may have
+    
+    You can see namespaces with
+        kubectl get pods --all-namespaces
     
 
 
