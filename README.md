@@ -164,4 +164,41 @@ The main configuration yaml for K3 is
     
 
 
+## Use kubectl from remote nodes
+---  I spent hours fixig this issue, so follow steps as described ---
 
+use scp to copy the k3s.yaml, DONT COPY/PASTE as secret will get corrupte
+
+On MASTER node:
+     
+     cd /etc/rancher/k3s
+     
+     Now copy k3s.yaml file using scp
+     
+     sudo scp k3s.yaml remote_user@remote.ip:$HOME/
+     
+ On WORKER node:
+ 
+    cd $HOME
+    nano k3s.yaml
+    
+    Modify the server: https://127.0.0.1:6443 line to https://your_master_ip:6443
+    
+    now we need to make a .kube folder on /root
+    
+        sudo mkdir /root/.kube
+    
+    Now copy k3s.yaml file to the /root/.kube folder
+    
+        sudo cp $HOME/.kube/k3s.yaml /root/.kube/k3s.yaml
+  
+   Now try to run Kubectl
+   
+        sudo kubectl get nodes
+        
+   If you get an error, try to run this commands and reboot your pi
+   
+        sudo dphys-swapfile swapoff && sudo dphys-swapfile uninstall && sudo systemctl disable dphys-swapfile
+
+    
+    
