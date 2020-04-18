@@ -191,7 +191,28 @@ On MASTER node:
     Now copy k3s.yaml file to the /root/.kube folder
     
         sudo cp $HOME/.kube/k3s.yaml /root/.kube/k3s.yaml
-  
+ 
+ On your Linux PC
+     
+   Install kubectl (it may vary depending of your distro, google it!!)
+     
+     Copy k3s.yaml from master node to your Linux PC
+     cd /etc/rancher/k3s
+     Now copy k3s.yaml file using scp
+     sudo scp k3s.yaml remote_user@remote.ip:$HOME/
+    
+   Check if you have a folder on your PC call: ~/.kube
+   if not create with 
+          
+          mkidr ~/.kube
+   
+   Then copy the k3s.yaml as config to ~/.kube
+      
+          cp $HOME/k3s.yaml ~/.kube/config
+   
+   
+   Now ope the ~/kube/config and modify the cluster IP from 127.0.0.1:6443 to YOUR-master-IP:6443
+   
    Now try to run Kubectl
    
         sudo kubectl get nodes
@@ -200,5 +221,10 @@ On MASTER node:
    
         sudo dphys-swapfile swapoff && sudo dphys-swapfile uninstall && sudo systemctl disable dphys-swapfile
 
-    
+# Useful kubecommands
+
+     kubectl get services --all-namespaces
+     kubectl cluster-info
+     
+
     
