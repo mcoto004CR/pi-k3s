@@ -78,7 +78,7 @@ Edit /boot/cmdline.txt on both the Raspberry Pi nodes and add the following to t
   
 
 ## Install Kube Dashboard
-   https://rancher.com/docks/k3s/latest/en/installation/kube-dashboard/
+   https://rancher.com/docs/k3s/latest/en/installation/kube-dashboard/
    
 ## Deploy NGIX - great tutorial
    https://opensource.com/article/20/3/kubernetes-traefik
