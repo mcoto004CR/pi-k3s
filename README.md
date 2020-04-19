@@ -226,5 +226,68 @@ On MASTER node:
      kubectl get services --all-namespaces
      kubectl cluster-info
      
+## Deploying openFaas
+Checkout OpenFaaS:
 
+    git clone https://github.com/openfaas/faas-netes
+    cd faas-netes
+
+Create Namespaces:
+
+    kubectl apply -f ./namespaces.yml
+
+Create secret and store user and new random password (required for UI):
+    
+    PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+    kubectl -n openfaas create secret generic basic-auth \
+        --from-literal=basic-auth-user=admin \
+    --from-literal=basic-auth-password="$PASSWORD"
+    echo $PASSWORD
+
+Deploy OpenFaaS:
+        
+    kubectl apply -f ./yaml_armhf
+    * note you need to use armhf for pi
+ 
+Confirm if everything is deployed correctly:
+
+    kubectl get deployments --namespace openfaas
+
+Normally OpenFaaS is using Dockerhub, but we want to use our own private registry, so we have to deploy it and expose the port:
+
+    kubectl run registry --image=registry:latest --port=5000 \
+    --namespace openfaas
+
+    kubectl expose deployment registry --namespace openfaas \
+    --type=LoadBalancer --port=5000 --target-port=5000
+
+Done — Web-UI should be available:
+
+    http://localhost:31112
+
+Let’s deploy a function:
+CLI Login:
+
+    faas-cli login --gateway http://localhost:31112 --password <pwd>
+
+Create a new function from a template — choose a language (more available):
+
+    faas-cli new --lang python hello-python
+    faas-cli new --lang java8 hello-java8
+    faas-cli new --lang node hello-node
+
+Open yml file and change gateway and image as we want to use our own private registry:
+ 
+    gateway: http://localhost:31112
+    image: localhost:5000/hello-python:latest
+    image: localhost:5000/hello-java8:latest
+    image: localhost:5000/hello-node:latest
+
+Now we have to build, push and deploy the function, this could be done with one command:
+
+    faas-cli up -f ./hello-python.yml
+    faas-cli up -f ./hello-java8.yml
+    faas-cli up -f ./hello-node.yml
+
+https://github.com/openfaas/faas-netes/blob/master/chart/openfaas/README.md
     
