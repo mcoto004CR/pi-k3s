@@ -292,6 +292,13 @@ Open yml file and change gateway and image as we want to use our own private reg
     image: localhost:5000/hello-java8:latest
     image: localhost:5000/hello-node:latest
 
+
+Prior this you will need to install docker if you dont have it.
+
+   This is how for elementar OS, you can googl it for your distro
+   
+   https://blog.avojak.com/2019/01/18/installing-docker-on-elementary-os/
+   
 Now we have to build, push and deploy the function, this could be done with one command:
 
     faas-cli up -f ./hello-python.yml
