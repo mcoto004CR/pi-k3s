@@ -261,9 +261,18 @@ Normally OpenFaaS is using Dockerhub, but we want to use our own private registr
     kubectl expose deployment registry --namespace openfaas \
     --type=LoadBalancer --port=5000 --target-port=5000
 
-Done — Web-UI should be available:
+Log into your OpenFaaS gateway
+Check the gateway is ready
 
-    http://localhost:31112
+    kubectl rollout status -n openfaas deploy/gateway
+
+If you're using your laptop, a VM, or any other kind of Kubernetes distribution run the following instead:
+
+    kubectl port-forward svc/gateway -n openfaas 8080:8080
+
+This command will open a tunnel from your Kubernetes cluster to your local computer so that you can access the OpenFaaS gateway. There are other ways to access OpenFaaS, but that is beyond the scope of this workshop.
+
+    Your gateway URL is: http://127.0.0.1:8080
 
 Let’s deploy a function:
 CLI Login:
