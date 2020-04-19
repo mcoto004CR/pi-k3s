@@ -306,4 +306,5 @@ Now we have to build, push and deploy the function, this could be done with one 
     faas-cli up -f ./hello-node.yml
 
 https://github.com/openfaas/faas-netes/blob/master/chart/openfaas/README.md
+https://github.com/openfaas/workshop
     
