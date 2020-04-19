@@ -287,7 +287,7 @@ Create a new function from a template — choose a language (more available):
 
 Open yml file and change gateway and image as we want to use our own private registry:
  
-    gateway: http://localhost:31112
+    gateway: http://127.0.0.1:8080
     image: localhost:5000/hello-python:latest
     image: localhost:5000/hello-java8:latest
     image: localhost:5000/hello-node:latest
