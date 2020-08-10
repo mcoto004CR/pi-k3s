@@ -308,3 +308,5 @@ Now we have to build, push and deploy the function, this could be done with one 
 https://github.com/openfaas/faas-netes/blob/master/chart/openfaas/README.md
 https://github.com/openfaas/workshop
     
+## Public inlet 
+https://blog.alexellis.io/ingress-for-your-local-kubernetes-cluster/
